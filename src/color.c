@@ -1,0 +1,98 @@
+/***[Includes]****************************************************************/
+#include "color.h"
+#include <ncurses.h>
+#include <stdlib.h>
+
+/***[Static variables]********************************************************/
+
+/***[Static functions prototypes]*********************************************/
+
+/***[Static functions]********************************************************/
+
+/***[Public functions]********************************************************/
+
+void color_init(void) {
+    if (has_colors() == FALSE) {
+        exit(1);
+    }
+    start_color();
+
+    init_pair(COLOR_BLACK_BLACK, COLOR_BLACK, COLOR_BLACK);
+    init_pair(COLOR_BLACK_RED, COLOR_BLACK, COLOR_RED);
+    init_pair(COLOR_BLACK_GREEN, COLOR_BLACK, COLOR_GREEN);
+    init_pair(COLOR_BLACK_YELLOW, COLOR_BLACK, COLOR_YELLOW);
+    init_pair(COLOR_BLACK_BLUE, COLOR_BLACK, COLOR_BLUE);
+    init_pair(COLOR_BLACK_MAGENTA, COLOR_BLACK, COLOR_MAGENTA);
+    init_pair(COLOR_BLACK_CYAN, COLOR_BLACK, COLOR_CYAN);
+    init_pair(COLOR_BLACK_WHITE, COLOR_BLACK, COLOR_WHITE);
+
+    init_pair(COLOR_RED_RED, COLOR_RED, COLOR_RED);
+    init_pair(COLOR_RED_GREEN, COLOR_RED, COLOR_GREEN);
+    init_pair(COLOR_RED_YELLOW, COLOR_RED, COLOR_YELLOW);
+    init_pair(COLOR_RED_BLUE, COLOR_RED, COLOR_BLUE);
+    init_pair(COLOR_RED_MAGENTA, COLOR_RED, COLOR_MAGENTA);
+    init_pair(COLOR_RED_CYAN, COLOR_RED, COLOR_CYAN);
+    init_pair(COLOR_RED_WHITE, COLOR_RED, COLOR_WHITE);
+
+    init_pair(COLOR_GREEN_GREEN, COLOR_GREEN, COLOR_GREEN);
+    init_pair(COLOR_GREEN_YELLOW, COLOR_GREEN, COLOR_YELLOW);
+    init_pair(COLOR_GREEN_BLUE, COLOR_GREEN, COLOR_BLUE);
+    init_pair(COLOR_GREEN_MAGENTA, COLOR_GREEN, COLOR_MAGENTA);
+    init_pair(COLOR_GREEN_CYAN, COLOR_GREEN, COLOR_CYAN);
+    init_pair(COLOR_GREEN_WHITE, COLOR_GREEN, COLOR_WHITE);
+
+    init_pair(COLOR_YELLOW_YELLOW, COLOR_YELLOW, COLOR_YELLOW);
+    init_pair(COLOR_YELLOW_BLUE, COLOR_YELLOW, COLOR_BLUE);
+    init_pair(COLOR_YELLOW_MAGENTA, COLOR_YELLOW, COLOR_MAGENTA);
+    init_pair(COLOR_YELLOW_CYAN, COLOR_YELLOW, COLOR_CYAN);
+    init_pair(COLOR_YELLOW_WHITE, COLOR_YELLOW, COLOR_WHITE);
+
+    init_pair(COLOR_BLUE_BLUE, COLOR_BLUE, COLOR_BLUE);
+    init_pair(COLOR_BLUE_MAGENTA, COLOR_BLUE, COLOR_MAGENTA);
+    init_pair(COLOR_BLUE_CYAN, COLOR_BLUE, COLOR_CYAN);
+    init_pair(COLOR_BLUE_WHITE, COLOR_BLUE, COLOR_WHITE);
+
+    init_pair(COLOR_MAGENTA_MAGENTA, COLOR_MAGENTA, COLOR_MAGENTA);
+    init_pair(COLOR_MAGENTA_CYAN, COLOR_MAGENTA, COLOR_CYAN);
+    init_pair(COLOR_MAGENTA_WHITE, COLOR_MAGENTA, COLOR_WHITE);
+
+    init_pair(COLOR_CYAN_CYAN, COLOR_CYAN, COLOR_CYAN);
+    init_pair(COLOR_CYAN_WHITE, COLOR_CYAN, COLOR_WHITE);
+
+    init_pair(COLOR_WHITE_WHITE, COLOR_WHITE, COLOR_WHITE);
+
+    init_pair(COLOR_RED_BLACK, COLOR_RED, COLOR_BLACK);
+    init_pair(COLOR_GREEN_BLACK, COLOR_GREEN, COLOR_BLACK);
+    init_pair(COLOR_YELLOW_BLACK, COLOR_YELLOW, COLOR_BLACK);
+    init_pair(COLOR_BLUE_BLACK, COLOR_BLUE, COLOR_BLACK);
+    init_pair(COLOR_MAGENTA_BLACK, COLOR_MAGENTA, COLOR_BLACK);
+    init_pair(COLOR_CYAN_BLACK, COLOR_CYAN, COLOR_BLACK);
+    init_pair(COLOR_WHITE_BLACK, COLOR_WHITE, COLOR_BLACK);
+
+    init_pair(COLOR_GREEN_RED, COLOR_GREEN, COLOR_RED);
+    init_pair(COLOR_YELLOW_RED, COLOR_YELLOW, COLOR_RED);
+    init_pair(COLOR_BLUE_RED, COLOR_BLUE, COLOR_RED);
+    init_pair(COLOR_MAGENTA_RED, COLOR_MAGENTA, COLOR_RED);
+    init_pair(COLOR_CYAN_RED, COLOR_CYAN, COLOR_RED);
+    init_pair(COLOR_WHITE_RED, COLOR_WHITE, COLOR_RED);
+
+    init_pair(COLOR_YELLOW_GREEN, COLOR_YELLOW, COLOR_GREEN);
+    init_pair(COLOR_BLUE_GREEN, COLOR_BLUE, COLOR_GREEN);
+    init_pair(COLOR_MAGENTA_GREEN, COLOR_MAGENTA, COLOR_GREEN);
+    init_pair(COLOR_CYAN_GREEN, COLOR_CYAN, COLOR_GREEN);
+    init_pair(COLOR_WHITE_GREEN, COLOR_WHITE, COLOR_GREEN);
+
+    init_pair(COLOR_BLUE_YELLOW, COLOR_BLUE, COLOR_YELLOW);
+    init_pair(COLOR_MAGENTA_YELLOW, COLOR_MAGENTA, COLOR_YELLOW);
+    init_pair(COLOR_CYAN_YELLOW, COLOR_CYAN, COLOR_YELLOW);
+    init_pair(COLOR_WHITE_YELLOW, COLOR_WHITE, COLOR_YELLOW);
+
+    init_pair(COLOR_MAGENTA_BLUE, COLOR_MAGENTA, COLOR_BLUE);
+    init_pair(COLOR_CYAN_BLUE, COLOR_CYAN, COLOR_BLUE);
+    init_pair(COLOR_WHITE_BLUE, COLOR_WHITE, COLOR_BLUE);
+
+    init_pair(COLOR_CYAN_MAGENTA, COLOR_CYAN, COLOR_MAGENTA);
+    init_pair(COLOR_WHITE_MAGENTA, COLOR_WHITE, COLOR_MAGENTA);
+
+    init_pair(COLOR_WHITE_CYAN, COLOR_WHITE, COLOR_CYAN);
+}

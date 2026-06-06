@@ -1,0 +1,61 @@
+Checks: [
+    "clang-analyzer-*",
+    "-clang-analyzer-security.insecureAPI.DeprecatedOrUnsafeBufferHandling",
+    "bugprone-*",
+    "modernize-*",
+    "portability-*",
+    "misc-*",
+    "cppcoreguidelines-*",
+    "performance-*",
+    "google-*",
+    "-google-readability-todo",
+    "readability-*",
+]
+
+HeaderFilterRegex: ".*"
+UseColor: true
+FormatStyle: llvm
+
+CheckOptions:
+    readability-identifier-naming.ConstantCase: "lower_case"
+    readability-identifier-naming.ConstantParameterCase: "lower_case"
+    readability-identifier-naming.ConstantPointerParameterCase: "lower_case"
+
+    readability-identifier-naming.EnumCase: "lower_case"
+    readability-identifier-naming.EnumSuffix: "_t"
+    readability-identifier-naming.EnumConstantCase: "UPPER_CASE"
+
+    readability-identifier-naming.FunctionCase: "lower_case"
+    readability-identifier-naming.GlobalFunctionCase: "lower_case"
+
+    readability-identifier-naming.GlobalConstantCase: "lower_case"
+    readability-identifier-naming.GlobalConstantPrefix: "g_"
+    readability-identifier-naming.GlobalConstantPointerCase: "lower_case"
+    readability-identifier-naming.GlobalConstantPointerPrefix: "g_"
+    readability-identifier-naming.GlobalPointerCase: "lower_case"
+    readability-identifier-naming.GlobalPointerPrefix: "g_"
+    readability-identifier-naming.GlobalVariableCase: "lower_case"
+    readability-identifier-naming.GlobalVariablePrefix: "g_"
+
+    readability-identifier-naming.LocalConstantCase: "lower_case"
+    readability-identifier-naming.LocalConstantPointerCase: "lower_case"
+    readability-identifier-naming.LocalPointerCase: "lower_case"
+    readability-identifier-naming.LocalVariableCase: "lower_case"
+
+    readability-identifier-naming.MacroDefinitionCase: "UPPER_CASE"
+    readability-identifier-naming.MacroDefinitionIgnoredRegexp: ".*H_"
+
+    readability-identifier-naming.ParameterCase: "lower_case"
+    readability-identifier-naming.PointerParameterCase: "lower_case"
+
+    readability-identifier-naming.StaticConstantCase: "lower_case"
+    readability-identifier-naming.StaticVariableCase: "lower_case"
+
+    readability-identifier-naming.StructCase: "lower_case"
+    readability-identifier-naming.StructSuffix: "_t"
+    readability-identifier-naming.TypedefCase: "lower_case"
+    readability-identifier-naming.TypedefSuffix: "_t"
+    readability-identifier-naming.UnionCase: "lower_case"
+    readability-identifier-naming.UnionSuffix: "_t"
+
+    readability-identifier-naming.VariableCase: "lower_case"
