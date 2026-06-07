@@ -27,6 +27,14 @@ EXE ?= exe
 # Name of the gdb script (can be empty)
 GDB_SCRIPT ?=
 
+TEST_DIR ?= test
+
+# Path to unity testing framework
+UNITY_DIR ?= test/framework/unity/src
+
+# Path to FFF testing framework
+FFF_DIR ?= test/framework/fff
+
 #------------------------------------------------------------------------------
 # Binutils
 #------------------------------------------------------------------------------
@@ -94,6 +102,26 @@ BUILD_SRC_DIRS := $(addprefix $(BUILD_DIR)/, $(SRC_DIRS))
 INFO_SRC_DIRS := $(addprefix $(BUILD_DIR)/$(INFO_DIR)/, $(SRC_DIRS))
 
 #------------------------------------------------------------------------------
+# Testing
+#------------------------------------------------------------------------------
+TEST_BUILD_DIR := $(BUILD_DIR)/$(TEST_DIR)/build
+TEST_BUILD_SRC_DIRS := $(addprefix $(TEST_BUILD_DIR)/, $(TEST_DIR) $(UNITY_DIR))
+TEST_EXE_DIR := $(BUILD_DIR)/$(TEST_DIR)
+
+TEST_HEADERS := $(wildcard $(UNITY_DIR)/*.h)
+TEST_HEADERS := $(wildcard $(TEST_DIR)/*.h)
+TEST_HEADER_FLAGS := $(addprefix -I , $(UNITY_DIR))
+
+TEST_FRAMEWORK_SRCS := $(wildcard $(UNITY_DIR)/*.c)
+TEST_SRCS := $(wildcard $(TEST_DIR)/*.c)
+
+TEST_OBJS := $(addprefix $(TEST_BUILD_DIR)/, $(TEST_SRCS) $(TEST_FRAMEWORK_SRCS))
+TEST_OBJS := $(patsubst %.c, %.o, $(TEST_OBJS))
+
+TEST_EXES := $(addprefix $(BUILD_DIR)/, $(TEST_SRCS))
+TEST_EXES := $(patsubst %.c, %.elf, $(TEST_EXES))
+
+#------------------------------------------------------------------------------
 # User targets
 #------------------------------------------------------------------------------
 
@@ -152,6 +180,14 @@ run: compile ## Execute compile program
 debug: compile
 	gdb $(ELF)
 
+.PHONY: test
+test: compile $(TEST_EXES)
+	for f in $(TEST_EXE_DIR)/*; do \
+		if [ -x "$${f}" ] && [ ! -d "$${f}" ]; then \
+			"$${f}"; \
+		fi \
+	done
+
 #------------------------------------------------------------------------------
 # Compilation targets
 #------------------------------------------------------------------------------
@@ -162,6 +198,17 @@ $(ELF): $(OBJS)
 	$(LD) -o $@ $^ $(LDFLAGS)
 	$(PRINT_CHECKMARK)
 	echo "Executable file \"$@\" successfully created."
+
+$(TEST_EXES): $(TEST_OBJS)
+	echo $(TEST_OBJS)
+	echo -n "Linking test $@..."
+	$(LD) -o $@ $^ $(LDFLAGS)
+	$(PRINT_CHECKMARK)
+
+$(TEST_BUILD_DIR)/%.o: %.c $(TEST_HEADERS) $(HEADERS) Makefile $(LDSCRIPT) $(TEST_BUILD_SRC_DIRS)
+	echo -n "Compiling test $< --> $@..."
+	$(CC) $(CFLAGS) $(HEADER_FLAGS) $(TEST_HEADER_FLAGS) -o $@ -c $<
+	$(PRINT_CHECKMARK)
 
 # Compiling object files from C sources
 $(BUILD_DIR)/%.o: %.c $(HEADERS) Makefile $(LDSCRIPT) $(BUILD_SRC_DIRS)
@@ -206,5 +253,5 @@ $(BIN): $(ELF)
 	$(PRINT_CHECKMARK)
 
 # Folders
-$(BUILD_SRC_DIRS) $(INFO_SRC_DIRS) $(BUILD_DIR)/$(INFO_DIR):
+$(BUILD_SRC_DIRS) $(INFO_SRC_DIRS) $(BUILD_DIR)/$(INFO_DIR) $(TEST_BUILD_SRC_DIRS):
 	mkdir -p $@
