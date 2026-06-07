@@ -108,9 +108,9 @@ TEST_BUILD_DIR := $(BUILD_DIR)/$(TEST_DIR)/build
 TEST_BUILD_SRC_DIRS := $(addprefix $(TEST_BUILD_DIR)/, $(TEST_DIR) $(UNITY_DIR))
 TEST_EXE_DIR := $(BUILD_DIR)/$(TEST_DIR)
 
-TEST_HEADERS := $(wildcard $(UNITY_DIR)/*.h)
+TEST_HEADERS := $(wildcard $(UNITY_DIR)/*.h $(FFF_DIR)/*.h)
 TEST_HEADERS := $(wildcard $(TEST_DIR)/*.h)
-TEST_HEADER_FLAGS := $(addprefix -I , $(UNITY_DIR))
+TEST_HEADER_FLAGS := $(addprefix -I , $(UNITY_DIR) $(FFF_DIR))
 
 TEST_FRAMEWORK_SRCS := $(wildcard $(UNITY_DIR)/*.c)
 TEST_SRCS := $(wildcard $(TEST_DIR)/*.c)
