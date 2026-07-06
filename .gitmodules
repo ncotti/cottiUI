@@ -4,3 +4,6 @@
 [submodule "test/framework/fff"]
 	path = test/framework/fff
 	url = https://github.com/meekrosoft/fff.git
+[submodule "cottimake"]
+	path = cottimake
+	url = https://github.com/ncotti/cotti-make.git
